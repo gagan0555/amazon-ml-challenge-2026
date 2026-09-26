@@ -1,10 +1,3 @@
-"""
-
-Usage:
-    python generate_candidate_pairs.py train
-    python generate_candidate_pairs.py test
-"""
-
 import re
 import os
 import sys
