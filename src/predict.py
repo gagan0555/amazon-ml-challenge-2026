@@ -63,6 +63,7 @@ def run_predictions():
         
         exploded['score'] = final_scores
         matches = exploded[exploded['score'] >= MATCH_THRESHOLD]
+        matches = matches.sort_values('score', ascending=False).drop_duplicates(subset=['cand_id'], keep='first')
         agg_matches = matches.groupby('source1_entity_id')['cand_id'].apply(lambda x: ','.join(x)).reset_index()
         agg_matches.rename(columns={'cand_id': 'matched_entity_ids'}, inplace=True)
         
